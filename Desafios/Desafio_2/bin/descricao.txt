@@ -1,0 +1,64 @@
+Estrutura:
+
+    App = Referente ao espediente
+        // Fará os comandos usando as funções disponíveis nos objetos 
+
+    Objetos:
+        // Haverá um resumo por cada forma de pagamento e por cada prodruto, ou seja:
+        // Todas as vendas que foram pagas com Crédito estarão no OBJETO relacionado a forma de pagamento Crédito
+
+        [Resumo]
+            - por [FORMA DE PAGAMENTO] ou [PODUTO]
+            - Quantidade vendida
+            - Valor Total
+
+        Lista de Vendas (ArrayList)
+            - Venda
+
+        [Venda]
+            - Lista de produtos (ArrayList)
+            - Valor Total
+            - forma de pagamento
+
+        [Produto]
+            - Id
+            - Nome/Descrição
+            - Valor
+            - Quantidade
+            
+
+Enunciado:
+    Construa uma aplicação que permita a venda de produtos. Ao iniciar as vendas, o usuário tem a
+opção de registrar, onde é exibido a lista de produtos com a sua descrição e respectivo valor (pode ser fixado
+valores no programa), devendo selecionar um destes e informar uma quantidade vendida. O usuário deve ser
+questionado se deseja adicionar outro até dizer que finalizou e então definir a forma de pagamento escolhida
+para a venda (Dinheiro, Débito, Crédito ou Pix). A outra opção disponível é finalizar vendas, onde então é
+exibido um resumo informando a data e hora de início e fim das vendas, quantidade vendida de cada produto
+e valor total (do maior para o menor), quantidade de venda por forma de pagamento e valor total (do menor
+para o maior) e total de vendas registradas. Os valores precisam estar formatados em moeda, ex: R$ 150,00.
+
+============================================= Sistema de Vendas ========================================================
+
+Exemplo de uso:
+* o usuário inicia o programa
+* Aparece uma lista dos produtos disponíveis com as informações:
+    - Descrição [ Nome ]
+    - Preço
+
+* Ao escolher um produto o usuário escolhe a quantidade que deseja comprar
+* Após escolher a quantidade, é perguntado se ele deseja continuar comprando ou terminar aquela venda
+* Se ele quer continuar comprando ele continua adicionando itens no "carrinho"
+* Se ele quiser terminar aquela venda é perguntado qual a forma de pagamento.
+
+* Quando terminar de registrar aquela venda é perguntado se ele deseja finalizar as vendas (encerrar o espediente)
+OU se ele deseja adicionar outra venda.
+
+* Após finalizar as vendas é mostrado um resumo do que foi comprado, da seguinte maneira
+    [Produtos]
+    - Nome do produto | Quantidade vendida | Valor total
+    # Deve estar em ordem DECRESCENTE!
+
+
+    [Formas de Pagamento]
+    - Forma de Pagamento | Quantidade de itens comprados | Valor Total
+    # Deve estar em ordem CRESCENTE!
