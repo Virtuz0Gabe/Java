@@ -1,0 +1,18 @@
+Criar uma lista de tarefas em Java:
+
+- A lista deve ter os seguintes atributos:
+* [Data] no formata Date do Java DD/MM/AAAA
+* [Descrição] em formato de texto.
+* [Status] deve informar se a tarefa está concluída ou não.
+
+
+- Metodos da Lista:
+* [alterar Statur] o usuário de poder alterar o Status da tarefa entr e ativa e pronta.
+* [Editar] O usuário deve poder alterar a [DESCRIÇÃO], [DATA] e [STATUS] das tarefas.
+* [Remover] o usuário deve poder apagar uma tarefa de sua lista
+* [Adicionar tarefa] o usuário deve poder adicionar uma nova tarefa para a lista.
+* [Sair] o usuário deve poder sair da lista, encerrando o programa.
+
+
+- Lembrar
+* [Validação] validar tudo que existe.
