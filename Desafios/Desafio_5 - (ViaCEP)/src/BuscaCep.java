@@ -16,11 +16,17 @@ public class BuscaCep {
 
     public static boolean verificaEntrada (String entrada) {
 
-        if (cache.containsKey(entrada)){
-            ArrayList<Endereco> enderecos = cache.get(entrada);
-            System.out.println("Pesquisa encontrada: ");
-            for (Endereco endereco : enderecos){
-                System.out.println(endereco);
+        String chave = entrada.replace(" ", "");
+        if (cache.containsKey(chave)){
+            ArrayList<Endereco> enderecos = cache.get(chave);
+            System.out.println("\n\u001B[92mPesquisa encontrada: \u001B[0m");
+            if (enderecos.size() == 1){
+                System.out.println(enderecos.get(0));
+            }else{
+                System.out.println(String.format("%-15s %-15s %-25s %s", "CEP", "Bairro", "Logradouro", "Complemento"));
+                for (Endereco endereco : enderecos){
+                    mostrarEspecifico(endereco);
+                }
             }
             return true;
         }
@@ -29,15 +35,16 @@ public class BuscaCep {
             buscandoPorCEP(entrada);
             return true;
         }
-        if (entrada.matches("[A-Z]{2},\\b[A-Za-z\\s]+\\b,\\b[A-Za-z\\s+]+\\b")){
+        if (entrada.matches("[A-Z]{2},\\s*[A-Za-z\\s]+,\\s*[A-Za-z\\s+]+")){
             buscandoPorEspecifico(entrada);
             return true;
         }
+        System.out.println("\u001B[31m   Formato inválido! \u001B[0m");
         return false;
     }
 
     public static void buscandoPorEspecifico(String entrada) {
-
+        String chave = entrada.replace(" ", "");
         String[] parte = entrada.split(",");
         String uf = parte[0];
         String cidade = parte[1];
@@ -55,16 +62,20 @@ public class BuscaCep {
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            if (response.statusCode() == 200) {
+            if (response.statusCode() == 200) {                
                 String jsonResponse = response.body();
                 Gson gson = new Gson();
                 TypeToken<List<Endereco>> typeToken = new TypeToken<List<Endereco>>() {};
                 ArrayList<Endereco> enderecos = gson.fromJson(jsonResponse, typeToken.getType());
-
-                System.out.println("\n");
-                cache.put(entrada, enderecos);
-                for (Endereco endereco : enderecos) {
-                    System.out.println(endereco);
+                if (enderecos.size() ==0){
+                    System.out.println("\u001B[31m    Nada encontrado\u001B[0m");
+                }else{
+                    System.out.println("\n");
+                    cache.put(chave, enderecos);
+                    System.out.println(String.format("%-15s %-15s %-25s %s", "CEP", "Bairro", "Logradouro", "Complemento"));
+                    for (Endereco endereco : enderecos) {
+                        mostrarEspecifico(endereco);
+                    }
                 }
             } else {
                 System.out.println("Erro na requisição: " + response.statusCode());
@@ -91,11 +102,14 @@ public class BuscaCep {
                 Gson gson = new Gson();
                 try{
                     Endereco endereco = gson.fromJson(jsonResponse, Endereco.class);
-                    System.out.println(endereco);
                     ArrayList<Endereco> enderecos = new ArrayList<>();
                     enderecos.add(endereco);
-                    cache.put(entrada, enderecos);
-
+                    if (enderecos.size() ==0 ){
+                        System.out.println("\u001B[31m    Nada encontrado\u001B[0m");
+                    }else{
+                        System.out.println(endereco);
+                        cache.put(entrada, enderecos);
+                    }
                 }catch (JsonSyntaxException e) {
                     System.out.println("deu pal na desserialização do JSON: " + e.getMessage());
                 }
@@ -106,4 +120,10 @@ public class BuscaCep {
             e.printStackTrace();
         }
     }
+
+
+    public static void mostrarEspecifico(Endereco endereco){
+        System.out.println(String.format("%-15s %-15s %-25s %s", endereco.getCep(), endereco.getBairro(), endereco.getLogradouro(), endereco.getComplemento()));
+    }
+
 }
