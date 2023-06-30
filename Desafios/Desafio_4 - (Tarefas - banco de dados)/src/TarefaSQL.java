@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 public class TarefaSQL {
     private ConectarSQL conectarSQL;
@@ -101,7 +102,9 @@ public class TarefaSQL {
                     int id = resultSet.getInt("id");
                     String descricao = resultSet.getString("descricao");
                     Date data = resultSet.getDate("data");
-                    System.out.println(id + " |  [" + showStatus + "]" + "  | " + data + " | " + descricao + "\n---------------------------------------------------");
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                    String dataFormatada = formatter.format(data);
+                    System.out.println(id + " |  [" + showStatus + "]" + "  | " + dataFormatada + " | " + descricao + "\n---------------------------------------------------");
                 }   
             }
         }catch (SQLException e){

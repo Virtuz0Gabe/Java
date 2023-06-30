@@ -85,7 +85,6 @@ public class BuscaCep {
         }
     } 
 
-
     public static void buscandoPorCEP(String entrada) {
         String urlCompleta = urlInicial + entrada + "/json";
 

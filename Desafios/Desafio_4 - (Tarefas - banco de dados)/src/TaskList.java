@@ -18,7 +18,6 @@ public class TaskList {
     
     // -- [1] -------- ESTE MÉTODO ADICIONA UM NOVO OBJETO [Task] A LISTA DE TAREFAS [TaskList]
     public void addTask() {
-        //Scanner scanner = new Scanner(System.in);
         String TaskDescription;
         System.out.println("\nDigite a [DESCRIÇÃO] da tarefa: ");
         TaskDescription = scanner.nextLine();
@@ -31,7 +30,6 @@ public class TaskList {
     
     // -- [2] -------- MÉTODO QUE ROMOVE UMA DETERMINADA TAREFA DA LISTA
     public boolean removeTask () {
-        //Scanner scanner = new Scanner(System.in);
         String msg = "\nQual tarefa você deseja Remover?\ndigite o ID da tarefa para remove-la ou [DIGITE 0] para cancelar";
         System.out.println(msg);
         while (!ValidaScannerNumber(scanner, msg)){
@@ -50,7 +48,6 @@ public class TaskList {
 
     // -- [3] -------- MÉTODO QUE EDITA UMA DETERMINADA TAREFA
     public void editTask () {
-        //Scanner scanner = new Scanner(System.in);
         String msg = "\nQual tarefa você deseja alterar?\ndigite o ID da tarefa para Alterar ou [DIGITE 0] para cancelar\n";
         System.out.println(msg);
         while (!ValidaScannerNumber(scanner, msg)){
@@ -86,7 +83,6 @@ public class TaskList {
 
     // -- [4] -------- MÉTODO QUE ALTERAR O STATUS DA TAREFA
         public void switchTaskStatus() {
-            //Scanner scanner = new Scanner(System.in);
             String msg = "\nQual tarefa você deseja alterar o Status?\ndigite o Index da tarefa para alterar o Status";
             System.out.println(msg);
             while (!ValidaScannerNumber(scanner, msg)){

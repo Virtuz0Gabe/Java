@@ -120,9 +120,8 @@ public class Biblioteca {
         System.out.println("\u001B[32m" + newMusic + "\u001B[0m\n");
     }
 
-
+ // [2] ADD PLAYLIST ------------------------------------------------
     public void addPlayList (){
-    
         Scanner scanner = new Scanner(System.in);
         String description;
         //int duration = 0;
