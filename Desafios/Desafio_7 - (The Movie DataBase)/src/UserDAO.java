@@ -24,15 +24,15 @@ public class UserDAO {
                 int index = 1;
                 while(resultSet.next()){
                     String apelido = resultSet.getString("apelido_usuario");
-                    System.out.println("[" + index + "] " + apelido);
                     int id = resultSet.getInt("id_usuario");
+                    System.out.println("[" + index + "] " + apelido);
+                    
                     String idString = Integer.toString(id);
                     userList.add(idString+","+apelido);
                     index ++;
                 }
             }
             conectarSQL.close();
-
         } catch (SQLException e){
             e.printStackTrace();
         }

@@ -17,15 +17,26 @@ public class App {
                 System.out.println("\u001B[95m\nO que você deseja fazer?\u001B[0m");
                 System.out.println("[1] Ver catálogo de filmes ");
                 System.out.println("[2] Ver os recomendados para você");
+                System.out.println("[3] Encerrar Sessão como \u001B[94m" + sessao.getUsuarioApelido() + "\u001B[0m");
                 escolha = scanner.nextLine();
                 switch (escolha){
                     case "1":
                         sessao.buscarCatalogo();
                         break;
+
+                    case "2":
+                        sessao.mostrarInteresses();
+                        break;
+
+                    case "3":
+                        runningSession = false;
+                        System.out.println("\n\u001B[92mSaindo...\u001B[0m");
+                        break;
+
+                    default:
+                        System.out.println("\n\u001B[91mValor       Inválido!");
                 }
-                // ações do APP quando Logado!
-                // CATÁLOGO!
-                // MINHA LISTA DE INTERESSES
+
             }
         }
 
