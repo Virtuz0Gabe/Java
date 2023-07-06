@@ -7,7 +7,7 @@ public class App {
         Scanner scanner =new Scanner(System.in);
         boolean runningApp = true;
         boolean runningSession;
-        System.out.println("\n == Seja Bem Vindo ao Filmes Virtuozos ==\n");
+        System.out.println("\n\u001B[95m == Seja Bem Vindo ao Filmes Virtuozos == \u001B[0m\n");
         
         while (runningApp){
             sessao.Login();
@@ -21,7 +21,7 @@ public class App {
                 escolha = scanner.nextLine();
                 switch (escolha){
                     case "1":
-                        sessao.buscarCatalogo();
+                        sessao.mostrarCatalogo();
                         break;
 
                     case "2":
@@ -30,7 +30,7 @@ public class App {
 
                     case "3":
                         runningSession = false;
-                        System.out.println("\n\u001B[92mSaindo...\u001B[0m");
+                        System.out.println("\n\u001B[92mSaindo...\n\u001B[0m");
                         break;
 
                     default:

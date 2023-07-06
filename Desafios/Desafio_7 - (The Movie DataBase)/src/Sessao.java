@@ -26,22 +26,48 @@ public class Sessao {
     public void Login (){
         ArrayList<Usuario> userList = userDAO.mostrarUsuariosDisponiveis();
         int index = 1;
+        System.out.println("[0] Encerrar sessão\n");
         for (Usuario usuario : userList){
             System.out.println("[" + index + "] " + usuario.getApelido());
             index ++;
         }
-        String msg = "Escolha um usuário para Logar";
+        String msg = "Escolha um usuário para Logar: ";
         System.out.println(msg);
         while (!ValidaScannerNumber(scanner, msg)){
             scanner.next();
         }
         int escolha = scanner.nextInt() - 1;
+        if (escolha == -1){
+            System.out.println("\n\u001B[92mTchauzinho ^ ^   \u001B[0m");
+            System.exit(0);
+        }
         this.usuario = (userList.get(escolha));
         System.out.println("\nSeja bem vindo \u001B[95m" + usuario.getApelido() + "\u001B[0m");
     }
 
-    public void buscarCatalogo (){
-        String url = "https://api.themoviedb.org/3/discover/movie?language=pt-BR&api_key=61cbb745059bfb58e7c56ab5fce49653";
+    // ISSO É UM ADICIONAL, QUANDO O CATÁLOGO CHEGA AO FIM PODE SER ESCOLHIDO PARA MOSTRAR MAIS FILMES
+    // POIS O TMDB RETORNA DIVERSAS PÁGINAS DE RESPOSTA NO CATÁLOGO ^ ^
+    public void mostrarCatalogo () {
+        boolean runningCatalogo = true;
+        int page = 1;
+        while (runningCatalogo){
+            buscarCatalogo(page);
+            String msg = "\n\u001B[95mO catálogo Chegou ao fim, o que deseja fazer agora?  \u001B[0m\n[1] Mostrar mais\n[2] Sair do catálogo";
+            System.out.println(msg);
+            while (!ValidaScannerNumber(scanner, msg)){
+                scanner.next();
+            }
+            int escolha = scanner.nextInt();
+            if (escolha == 1){
+                page ++;
+            }else{
+                return;
+            }
+        }
+    }
+
+    public void buscarCatalogo (int page){
+        String url = "https://api.themoviedb.org/3/discover/movie?language=pt-BR&page=" + page + "&api_key=61cbb745059bfb58e7c56ab5fce49653";
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create(url))
@@ -73,7 +99,7 @@ public class Sessao {
                     if (escolha == 3){
                         return;
                     }
-                }  
+                }
             }
         } catch (Exception e){
             e.printStackTrace();

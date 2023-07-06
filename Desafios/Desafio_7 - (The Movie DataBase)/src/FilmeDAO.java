@@ -44,7 +44,6 @@ public class FilmeDAO {
         return true;
     }
 
-
     // === MÉTODOS DE MANIPULAÇÃO AO BANCO DE DADOS ======================================================
     public void adicionarFilmeNoBanco (Filme filme) {
         try (Connection connection = conectarSQL.getConnection()) {
