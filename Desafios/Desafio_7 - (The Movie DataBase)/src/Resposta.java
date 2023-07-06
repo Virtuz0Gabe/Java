@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+// ESSE OBJETO É NESCESSÁRIO POIS A RESPOSTA DA API VEM EM PÁGINAS, OU SEJA NÃO VEM A RESPOSTA BRUTA
 public class Resposta {
     ArrayList<Filme> results;
 
@@ -9,10 +9,7 @@ public class Resposta {
 
     public void setResult(ArrayList<Filme> result) {
         this.results = result;
-    }
-
-   
-    
+    } 
 }
 
 

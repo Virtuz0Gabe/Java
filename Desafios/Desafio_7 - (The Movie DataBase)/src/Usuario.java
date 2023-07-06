@@ -1,14 +1,12 @@
 public class Usuario {
     int id;
     String apelido;
+    // NO BANCO TEM MAIS INFORMAÇÃO DO USUÁRIO MAS SOMENTE ESSAS SÃO ÚTEIS NESSE PROGRAMA
 
-    
     public Usuario(int id,String apelido) {
         this.id = id;
         this.apelido = apelido;
     }
-
-
 
     // =========================== GETTERS ===========================
     public int getId() {
@@ -24,10 +22,5 @@ public class Usuario {
     }
     public void setApelido(String apelido) {
         this.apelido = apelido;
-    }
-
-    
-
-
-    
+    }  
 }

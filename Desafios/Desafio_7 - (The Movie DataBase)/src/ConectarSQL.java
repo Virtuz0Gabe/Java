@@ -8,7 +8,6 @@ public class ConectarSQL {
     private final String password = "gabrielwerner1";
     private Connection connection;
 
-
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }

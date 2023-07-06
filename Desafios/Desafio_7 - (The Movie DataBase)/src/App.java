@@ -36,10 +36,8 @@ public class App {
                     default:
                         System.out.println("\n\u001B[91mValor       Inválido!");
                 }
-
             }
         }
-
         scanner.close();
     }
 }

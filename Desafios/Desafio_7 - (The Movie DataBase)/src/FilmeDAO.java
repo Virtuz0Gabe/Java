@@ -9,7 +9,6 @@ public class FilmeDAO {
         this.conectarSQL = conectarSQL;
     }
 
-
     // === MÉTODOS DE VERIFICAÇÃO DE DADOS ======================================================
     public boolean filmeExistenteNoBanco (Filme filme){
         try(Connection connection = conectarSQL.getConnection()) {
@@ -78,35 +77,5 @@ public class FilmeDAO {
             e.printStackTrace();
         }
     }
-
-    // === MÉTODOS DE MANIPULAÇÃO AO BANCO DE DADOS ======================================================
-    
-    public void mostrarFilme (int idFilme){
-        try(Connection connection = conectarSQL.getConnection()){
-            String query = "SELECT * FROM filmes_virtuozos.filmes WHERE id_filme = " + idFilme;
-            try(PreparedStatement statement = connection.prepareStatement(query)){
-                ResultSet resultSet = statement.executeQuery();
-                resultSet.next();
-                String titulo = resultSet.getString("titulo");
-                java.sql.Date dataDeLancamento = resultSet.getDate("data_lancamento");
-                String sinopse = resultSet.getString("sinopse");
-                float media_de_votos = resultSet.getFloat("media_de_votos");
-                int quantidade_de_votos = resultSet.getInt("quantidade_de_votos");
-
-                System.out.println("\n\n\u001B[34mTítulo: \u001B[0m" + titulo + 
-                "\n\u001B[34mData de Lançamento: \u001B[0m" + dataDeLancamento +
-                "\n\n\u001B[96mMédia de Votos: \u001B[0m" + media_de_votos +
-                "\n\u001B[96mQuantidade de Votos: \u001B[0m" + quantidade_de_votos +
-                "\n\n\u001B[94mSinópse: \u001B[0m" + sinopse);
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-
-
-
 
 }

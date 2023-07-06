@@ -1,5 +1,3 @@
-//import java.sql.Date;
-
 import java.sql.Date;
 
 public class Filme {
@@ -12,7 +10,6 @@ public class Filme {
 
     private String backdroPath;
 
-    
     public Filme(String title, Date release_date, String overview, float vote_average, int vote_count) {
         this.title = title;
         this.release_date = release_date;
@@ -21,7 +18,53 @@ public class Filme {
         this.vote_count = vote_count;
     }
 
+    // =========================== GETTERS ===========================
+    public int getId() {
+        return id;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public java.sql.Date getReleaseDate() {
+        return release_date;
+    }
+    public String getOverview() {
+        return overview;
+    }
+    public float getVoteAverage() {
+        return vote_average;
+    }
+    public int getVoteCount() {
+        return vote_count;
+    }
+    public String getBackdroPath() {
+        return backdroPath;
+    }
 
+    // =========================== GETTERS ===========================
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setReleaseDate(java.sql.Date releaseDate) {
+        this.release_date = releaseDate;
+    }
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+    public void setVoteAverage(float voteAverage) {
+        this.vote_average = voteAverage;
+    }
+    public void setVoteCount(int voteCount) {
+        this.vote_count = voteCount;
+    }
+    public void setBackdroPath(String backdroPath) {
+        this.backdroPath = backdroPath;
+    }
+
+    // === MÉTODOS ADICIONAIS ================================================
     public String toString(){
         return "\n\n\u001B[34mTítulo: \u001B[0m" + title + 
         "\n\u001B[34mData de Lançamento: \u001B[0m" + release_date +
@@ -29,75 +72,10 @@ public class Filme {
         "\n\u001B[96mQuantidade de Votos: \u001B[0m" + vote_count +
         "\n\n\u001B[94mSinópse: \u001B[0m" + overview;
     }
-
-
-    // =========================== GETTERS ===========================
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public java.sql.Date getReleaseDate() {
-        return release_date;
-    }
-
-    public String getOverview() {
-        return overview;
-    }
-
-    public float getVoteAverage() {
-        return vote_average;
-    }
-
-    public int getVoteCount() {
-        return vote_count;
-    }
-
-    public String getBackdroPath() {
-        return backdroPath;
-    }
-
-
-    // =========================== GETTERS ===========================
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setReleaseDate(java.sql.Date releaseDate) {
-        this.release_date = releaseDate;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
-    }
-
-    public void setVoteAverage(float voteAverage) {
-        this.vote_average = voteAverage;
-    }
-
-    public void setVoteCount(int voteCount) {
-        this.vote_count = voteCount;
-    }
-
-    public void setBackdroPath(String backdroPath) {
-        this.backdroPath = backdroPath;
-    }
-
-    
-    
-
-
-
 }
 
-// EXEMPLO DE COMO FICA O JSON RETORNADO [OBS: ESTÁ SENDO CONSIDERADO O RETORNO PELA TRADUÇÃO PARA pt-BR]
+// EXEMPLO DE COMO FICA O JSON RETORNADO DE UM DOS FILMES (DA LISTA QUE É RETORNADA) [OBS: ESTÁ SENDO CONSIDERADO O RETORNO PELA TRADUÇÃO pt-BR]
+
 // {"adult":false,
 //"backdroPath":"/27u4kBGGOQLqizEudJAOWMkvhip.jpg",
 //"genre_ids":[28,80,53],
