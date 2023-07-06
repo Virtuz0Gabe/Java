@@ -91,7 +91,7 @@ public class TarefaSQL {
         try (Connection connection = conectarSQL.getConnection()){
             pesquisa = pesquisa + " ORDER BY data";
             try(PreparedStatement statement = connection.prepareStatement(pesquisa)){
-                ResultSet  resultSet = statement.executeQuery();
+                ResultSet resultSet = statement.executeQuery();
                 System.out.println("---------------------------------------------------");
                 while(resultSet.next()){
                     int status = resultSet.getInt("status");

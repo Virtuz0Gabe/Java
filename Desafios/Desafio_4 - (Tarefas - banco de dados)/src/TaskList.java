@@ -127,7 +127,6 @@ public class TaskList {
                     scanner.nextLine();
                     String palavraChave = scanner.nextLine();
                     query = "SELECT * FROM tarefas WHERE descricao LIKE '%" + palavraChave + "%';";
-                    System.out.println(query);
                     tarefaSQL.pesquisaBanco(query);
                     break;
 

@@ -16,7 +16,7 @@ public class BuscaCep {
 
     public static boolean verificaEntrada (String entrada) {
 
-        String chave = entrada.replace(" ", "");
+        String chave = (entrada.replace(" ", "")).toLowerCase();
         if (cache.containsKey(chave)){
             ArrayList<Endereco> enderecos = cache.get(chave);
             System.out.println("\n\u001B[92mPesquisa encontrada: \u001B[0m");
@@ -44,7 +44,7 @@ public class BuscaCep {
     }
 
     public static void buscandoPorEspecifico(String entrada) {
-        String chave = entrada.replace(" ", "");
+        String chave = (entrada.replace(" ", "")).toLowerCase();
         String[] parte = entrada.split(",");
         String uf = parte[0];
         String cidade = parte[1];
